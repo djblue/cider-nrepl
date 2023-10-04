@@ -150,12 +150,13 @@
 ;; of type `:clojure.test.check.clojure-test/shrinking`, which `defspec`
 ;; produces to report failing input before shrinking it.
 
-(defmulti report
-  "Handle reporting for test events.
+(defmulti
+  ^{:doc "Handle reporting for test events.
 
   This takes a test event map as an argument and updates the `current-report`
   atom to reflect test results and summary statistics."
-  :type)
+    :dynamic true}
+  report :type)
 
 (defmethod report :default [_m])
 
